@@ -3,8 +3,8 @@
 This project identifies the batch recipe that maximizes the space-time profit of monoclonal antibody (mAb) production in a 1 L bioreactor. Using only 30 batch runs selected through a two-stage experimental design, it builds a polynomial response surface that predicts the antibody titre curve from the initial glucose, glutamine and cell density. It estimates uncertainty with a batch-level bootstrap and searches 343 candidate recipes, at every possible harvest time, for the most profitable option.
 ## Highlights
 
-- Designed a sequential, two-stage experiment (3 × 3 × 3 factorial plus three confirmation replicates) that used only 30 of 1029 available batch runs.- Developed a direct polynomial surrogate of the mAb titre that cut leave-one-batch-out error by roughly 50% compared
-  with non-linear vector autoregression (NVAR) models.
+- Designed a sequential, two-stage experiment (3 × 3 × 3 factorial plus three confirmation replicates) that used only 30 of 1029 available batch runs.
+- Developed a direct polynomial surrogate of the mAb titre that cut leave-one-batch-out error by roughly 50% compared
 - Quantified prediction uncertainty with a batch-level bootstrap and validated it, reaching 93–94% empirical coverage of
   the nominal 95% prediction intervals.
 - Optimized initial conditions and harvest time over 29,155 recipe/harvest combinations, identifying an operating point
@@ -147,7 +147,7 @@ within the first 10 days falling into the forecasted 95% prediction intervals.
 
 ### Influence of initial conditions on space-time profit and yield
 
-Figures 5 and 6 present the maximal possible values of spatial-time profit and the profits obtained by changing one parameter
+Figures 5 and 6 present the maximal possible values of space-time profit and the profits obtained by changing one parameter
 each time and adjusting the harvesting time accordingly.
 
 ![Profit landscape](figures/figure_05_profit_landscape.png)
