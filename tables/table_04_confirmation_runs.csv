@@ -1,0 +1,4 @@
+Batch ID,Harvest time [d],Predicted mAb [mg/L],PI low [mg/L],PI high [mg/L],Observed mAb [mg/L],Predicted STP [$/(L d)],Observed STP [$/(L d)],Fraction of points in PI (first 10 d),RMSE first 10 d [mg/L]
+343,2.667,0.845,0.625,0.938,0.92,91.475,111.818,1.0,0.078
+344,2.667,0.845,0.625,0.938,0.8,91.475,79.091,1.0,0.07
+345,2.667,0.845,0.625,0.938,0.78,91.475,73.636,1.0,0.078

@@ -1,0 +1,39 @@
+Model,Configuration,LOBO RMSE full run [mg/L],LOBO RMSE first 10 d [mg/L],LOBO RMSE SD [mg/L]
+Surrogate (log time),"Surrogate (degree=4, alpha=10, time=log)",0.0481,0.0496,0.0125
+Surrogate (log time),"Surrogate (degree=4, alpha=0.1, time=log)",0.0494,0.0508,0.0123
+Surrogate (log time),"Surrogate (degree=4, alpha=0.001, time=log)",0.0494,0.0508,0.0123
+Surrogate (log time),"Surrogate (degree=5, alpha=10, time=log)",0.0553,0.0551,0.0161
+Surrogate (log time),"Surrogate (degree=3, alpha=10, time=log)",0.0566,0.0587,0.0178
+Surrogate (log time),"Surrogate (degree=3, alpha=0.1, time=log)",0.0572,0.0589,0.0187
+Surrogate (log time),"Surrogate (degree=3, alpha=0.001, time=log)",0.0572,0.0589,0.0187
+Surrogate (log time),"Surrogate (degree=5, alpha=0.1, time=log)",0.0609,0.0593,0.016
+Surrogate (log time),"Surrogate (degree=5, alpha=0.001, time=log)",0.0616,0.0598,0.0164
+Surrogate (log time),"Surrogate (degree=3, alpha=100, time=log)",0.0597,0.0632,0.0165
+Surrogate (log time),"Surrogate (degree=4, alpha=100, time=log)",0.0671,0.0679,0.0187
+Surrogate (linear time),"Surrogate (degree=5, alpha=10, time=linear)",0.0647,0.0744,0.019
+Surrogate (linear time),"Surrogate (degree=5, alpha=0.1, time=linear)",0.0704,0.0782,0.018
+Surrogate (linear time),"Surrogate (degree=5, alpha=0.001, time=linear)",0.071,0.0787,0.0183
+Surrogate (linear time),"Surrogate (degree=4, alpha=10, time=linear)",0.0653,0.0825,0.019
+Surrogate (linear time),"Surrogate (degree=4, alpha=0.1, time=linear)",0.0665,0.0838,0.0179
+Surrogate (linear time),"Surrogate (degree=4, alpha=0.001, time=linear)",0.0665,0.0838,0.0179
+Surrogate (log time),"Surrogate (degree=2, alpha=100, time=log)",0.0812,0.0885,0.0245
+Surrogate (log time),"Surrogate (degree=2, alpha=10, time=log)",0.0814,0.089,0.0238
+Surrogate (log time),"Surrogate (degree=2, alpha=0.1, time=log)",0.0817,0.0893,0.0237
+Surrogate (log time),"Surrogate (degree=2, alpha=0.001, time=log)",0.0817,0.0893,0.0237
+NVAR-poly,"NVAR-poly (degree=2, p=2)",0.1334,0.0964,0.0808
+Surrogate (linear time),"Surrogate (degree=4, alpha=100, time=linear)",0.0814,0.0966,0.0211
+Surrogate (linear time),"Surrogate (degree=3, alpha=10, time=linear)",0.0821,0.1053,0.0248
+Surrogate (linear time),"Surrogate (degree=3, alpha=0.1, time=linear)",0.0826,0.1055,0.025
+Surrogate (linear time),"Surrogate (degree=3, alpha=0.001, time=linear)",0.0826,0.1055,0.025
+Surrogate (linear time),"Surrogate (degree=3, alpha=100, time=linear)",0.0838,0.1073,0.0257
+Surrogate (log time),"Surrogate (degree=5, alpha=100, time=log)",0.1142,0.1079,0.0471
+NVAR-poly,"NVAR-poly (degree=2, p=1)",0.1984,0.1344,0.1202
+Surrogate (linear time),"Surrogate (degree=5, alpha=100, time=linear)",0.1236,0.1348,0.0485
+Surrogate (linear time),"Surrogate (degree=2, alpha=100, time=linear)",0.1172,0.1517,0.03
+Surrogate (linear time),"Surrogate (degree=2, alpha=10, time=linear)",0.1184,0.1542,0.0263
+Surrogate (linear time),"Surrogate (degree=2, alpha=0.1, time=linear)",0.1187,0.1546,0.0258
+Surrogate (linear time),"Surrogate (degree=2, alpha=0.001, time=linear)",0.1187,0.1546,0.0258
+NVAR-knn,"NVAR-knn (k=5, p=1)",0.159,0.1602,0.0963
+NVAR-knn,"NVAR-knn (k=10, p=2)",0.1694,0.1641,0.0679
+NVAR-knn,"NVAR-knn (k=5, p=2)",0.1568,0.1644,0.0885
+NVAR-knn,"NVAR-knn (k=10, p=1)",0.1814,0.1647,0.1042
