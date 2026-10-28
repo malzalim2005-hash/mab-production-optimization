@@ -74,4 +74,4 @@ dependencies:
       - sympy==1.14.0
       - torch==2.14.0
       - typing-extensions==4.16.0
-prefix: /opt/miniconda3/envs/chg4360c-fall2026
+
