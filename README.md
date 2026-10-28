@@ -1,7 +1,6 @@
 # mAb Production Optimization
 
-The project aims to discover one specific batch recipe that will create the maximum profit for the monoclonal antibody (mAb) produced in the 1 L bioreactor. With just 30 batch runs selected using two-stage experimentation, a polynomial response surface is built from the collected data. The response surface predicts the antibody yield curve for the corresponding initial glucose, glutamine and cell density concentrations, as well as estimates uncertainty using the batch-level bootstrap, thus searching through 343 recipes obtained from the harvest process for the best batch recipe from many possible alternatives.
-
+This project identifies the batch recipe that maximizes the space-time profit of monoclonal antibody (mAb) production in a 1 L bioreactor. Using only 30 batch runs selected through a two-stage experimental design, it builds a polynomial response surface that predicts the antibody titre curve from the initial glucose, glutamine and cell density. It estimates uncertainty with a batch-level bootstrap and searches 343 candidate recipes, at every possible harvest time, for the most profitable option.
 ## Highlights
 
 - The research in question was planned out via a two-step, sequential experiment (3 x 3 x 3 factorial). This reference uses only 30 of the 1029 batches that were available in the machine's memory, which save the actual experiment the computer is involved in.
