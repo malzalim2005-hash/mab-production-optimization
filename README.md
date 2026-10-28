@@ -1,3 +1,68 @@
+# mAb Production Optimization
+
+The project aims to discover one specific batch recipe that will create the maximum profit for the monoclonal antibody (mAb) produced in the 1 L bioreactor. With just 30 batch runs selected using two-stage experimentation, a polynomial response surface is built from the collected data. The response surface predicts the antibody yield curve for the corresponding initial glucose, glutamine and cell density concentrations, as well as estimates uncertainty using the batch-level bootstrap, thus searching through 343 recipes obtained from the harvest process for the best batch recipe from many possible alternatives.
+
+## Highlights
+
+- The research in question was planned out via a two-step, sequential experiment (3 x 3 x 3 factorial). This reference uses only 30 of the 1029 batches that were available in the machine's memory, which save the actual experiment the computer is involved in.
+- Developed a direct polynomial surrogate of the mAb titre that cut leave-one-batch-out error by roughly 50% compared
+  with non-linear vector autoregression (NVAR) models.
+- Quantified prediction uncertainty with a batch-level bootstrap and validated it, reaching 93–94% empirical coverage of
+  the nominal 95% prediction intervals.
+- Optimized initial conditions and harvest time over 29,155 recipe/harvest combinations, identifying an operating point
+  worth 81 $/(L·d).
+- Validated the model prospectively: confirmation runs placed at the predicted optimum landed inside the predicted
+  95% intervals.
+
+## Environment
+
+- Python 3.14.7
+- matplotlib 3.11.0
+- NumPy 2.5.2
+- pandas 3.0.5
+- scikit-learn 1.9.0
+
+## Code Design
+
+When you run the `main.py` program and call it, it will execute pretty much all the work from reading raw data from CSV files to making all the suggestions in the document. The `main.py` serves only as a conductor for events. All the business logic is situated in the folder `src/`. The file `src/constants.py` shows the assumptions like file paths, parameters of the economy, candidate levels, the design of the experiment, hyperparameter grids, and random seed. The file `src/classes.py` provides two experience models, while the file `src/functions.py` provides everything related to data processing.
+
+### 1. Data loading and experimental design
+
+In order to read the `initial_conditions.csv` file, the program has to check and gather all the `batch_####.csv` files from the folder called `datasets`. Since the batch files are checked automatically, any additions or deletions of runs do not require any changes in the code. Every batch is read in a three-dimensional array format (batch × time × variable process), and the whole process is checked against an 8 hours long sampling schedule that enables all the steps of the program to allow for vector economics. After that, each experiment gets a label as either belonging to either the Stage 1 factorial or Stage 2 confirmation runs and the parameters describing economic results (that is cost, peak titres and best harvest) are recorded in the relevant tables. The given stage is necessary for ensuring the right work of all these stages of the program on the validated and properly standardized dataset.
+
+### 2. Model selection
+
+This stage decides which model is trusted for optimization. Two families are compared. The first is a direct
+surrogate (`PolynomialSurrogate`) that maps the three initial conditions and time to the mAb titre in one step. Its
+feature engineering expresses VCD in millions of cells/mL to keep polynomial terms well conditioned, optionally
+replaces time with log(1 + t), standardizes the inputs, expands them into polynomial terms and fits a ridge
+regression. The second family is NVAR (`NVARModel`), which learns how all seven process variables change over one
+sampling interval from the previous *p* states and builds a full trajectory by feeding its predictions back into
+itself, adding re-sampled training residuals as white noise.
+
+**Each specific configuration (32 surrogate configurations and 6 NVAR configurations) is validated through the leave-one-batch-out cross-validation process adapted to our particular task.
+It is important to leave out an entire batch, not just certain points in time, because points from the same batch are highly correlated; doing random sampling will lead to information leakage and overestimating performance. The held-out batch is forecasted using only predetermined initial conditions, which is how we use these models for making predictions in practice later on. The models are compared based on the error made in the first ten days, as this is the time of all significant harvests.**
+
+### 3. Prospective validation of the design
+
+The model is refit on the 27 Stage 1 batches only, reproducing the information that was available when the
+confirmation runs were planned. Its prediction and 95% prediction interval at the Stage 2 recipe are compared with the
+three confirmation runs. This stage exists because cross-validation alone cannot show whether the optimizer's choice
+holds up when tested, and an optimum is the place where models are most often over-optimistic (Table 4, Figure 4).
+
+### 4. Uncertainty quantification and calibration
+
+Prediction intervals come from a batch-level bootstrap. Batches are resampled with replacement and the surrogate is
+refit, which captures model uncertainty; a training residual observed at the same time point is then added, which
+captures run-to-run and measurement noise. Drawing residuals by time point respects the fact that noise grows as the
+titre rises. To check that these intervals are honest, the whole procedure is repeated inside leave-one-batch-out
+cross-validation and the fraction of held-out measurements falling inside their interval is reported (Table 5). This
+stage is what allows the final recommendation to be reported with defensible 95% intervals instead of a single number.
+
+### 5. Optimization and reporting
+
+The final model was assessed based on all thirty batches, and predictions for the titre curves associated with the 343 potential recipes (seven assumptions about each initial condition) were made. The cost, value, space-time profit and space-time yield were calculated for every one of the total 85 harvest times; the optimizer thus actually chooses the recipe and the harvest time in the course of the optimization procedure. Recipes were ranked in terms of space-time profit metric and separately for space-time yield (Table 6, 7). Bootstrap prediction intervals were then calculated for the above optimal recipes and conditions in terms of the variance—one factor at a time (Table 8, 9, Figure 5-7). The final step converts the model into the proper recipe and harvest schedule that project was destined for.
+
 ## Analysis
 
 ### Choice of the 30 batch runs
